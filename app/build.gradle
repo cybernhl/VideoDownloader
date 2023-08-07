@@ -1,16 +1,27 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    buildFeatures {
+        viewBinding true
+    }
+    lintOptions {
+        warningsAsErrors true
+        abortOnError true
+        disable 'MissingTranslation',
+                'ExtraTranslation',
+                'TypographyEllipsis',
+                'UnspecifiedImmutableFlag',
+                'UnusedResources',
+                'TypographyDashes'
+    }
     defaultConfig {
         applicationId "com.jeffmony.videodemo"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
     }
 
     buildTypes {
@@ -25,7 +36,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
@@ -33,7 +43,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.github.florent37:runtime-permission:1.1.0'
     implementation 'com.github.JeffMony:PlayerSDK:2.0.0'
-    implementation 'com.github.JeffMony:JeffM3U8Lib:1.2.0'
+    implementation 'com.github.JeffMony:JeffM3U8Lib:1.4.0'
     implementation project(path: ':library')
-
 }
